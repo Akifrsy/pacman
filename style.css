@@ -1,0 +1,49 @@
+body {
+    background-color: #000;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .pacman {
+    --size: 5vw;
+    --color: #fdff00;
+    --deg: -30deg;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    position: relative;
+    background-image: conic-gradient(transparent 50%, var(--color) 50%);
+  }
+  
+  .pacman:before,
+  .pacman:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-image: conic-gradient(var(--color) 25%, transparent 25%, transparent 75%, var(--color) 75%);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    transform-origin: 50% 50%;
+    animation-name: eating;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  .pacman:after {
+    --deg: 30deg;
+    background-image: conic-gradient(transparent 25%, var(--color) 25%, var(--color) 75%, transparent 75%);
+  }
+  
+  @keyframes eating {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(var(--deg));
+      }
+  }
